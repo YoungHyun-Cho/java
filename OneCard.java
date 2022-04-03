@@ -14,7 +14,7 @@ class OneCard {
     Card[] player2 = deck.split(deck.cards, "player");
     Card[] reserve = deck.split(deck.cards, "reserve");
 
-    for (int i = 0; i < player1.length; i++) 
+    for (int i = 0; i < reserve.length; i++) 
       System.out.printf("%d: %s%n", i, player1[i].toString());
 
     // 첫 장 뽑기 
