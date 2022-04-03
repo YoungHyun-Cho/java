@@ -8,12 +8,17 @@ class OneCard {
     System.out.println("One Card Game ========================");
     deck.shuffle();
     
-    // 카드 분배
-    Card[] player1 = Arrays.copyOfRange(deck.cards, 0, 7);
-    Card[] player2 = Arrays.copyOfRange(deck.cards, 7, 14);
-    Card[] reserve = Arrays.copyOfRange(deck.cards, 14, 55);
 
-    // 첫 장 뽑기
+    // 카드 분배
+    Card[] player1 = deck.split(deck.cards, "player");
+    Card[] player2 = deck.split(deck.cards, "player");
+    Card[] reserve = deck.split(deck.cards, "reserve");
+
+    for (int i = 0; i < player1.length; i++) 
+      System.out.printf("%d: %s%n", i, player1[i].toString());
+
+    // 첫 장 뽑기 
+    
 
 
     // System.out.printf("%d, %d, %d", player1.length, player2.length, reserve.length);
@@ -44,6 +49,30 @@ class Deck {
       cards[i] = cards[r];
       cards[r] = temp;
     }
+  }
+    
+  Card[] split(Card[] cards, String type) {
+    Card[] temp = new Card[CARD_NUM - 7];
+    Card[] result;
+    int i = 0;
+    if (type.equals("player")) {
+      result = new Card[7];
+      for (i = 0; i < 7; i++) {
+        result[i] = cards[i];
+      }
+    }
+    else {
+      result = new Card[CARD_NUM - 14];
+      for (i = 0; i < CARD_NUM - 14; i++) {
+        result[i] = cards[i];
+      }
+    }
+    int j = 0;
+    while (i < CARD_NUM) {
+      temp[j++] = cards[i++];
+    }
+    cards = temp;
+    return result;
   }
 }
 
