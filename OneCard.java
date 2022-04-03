@@ -7,6 +7,7 @@ class OneCard {
 
     System.out.println("One Card Game ========================");
     deck.shuffle();
+    deck.shuffle();
     
 
     // 카드 분배
@@ -15,7 +16,7 @@ class OneCard {
     Card[] reserve = deck.split(deck.cards, "reserve");
 
     for (int i = 0; i < reserve.length; i++) 
-      System.out.printf("%d: %s%n", i, player1[i].toString());
+      System.out.printf("%d: %s%n", i, reserve[i].toString());
 
     // 첫 장 뽑기 
     
